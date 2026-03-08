@@ -259,27 +259,61 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <footer id="footer" className="mt-6 rounded-2xl border border-slate-200 bg-white px-5 py-6">
-        <div className="grid gap-5 md:grid-cols-3">
+      <footer
+        id="footer"
+        className="relative mt-6 overflow-hidden rounded-[24px] border border-slate-200 bg-[linear-gradient(140deg,#0f172a_0%,#1f2937_60%,#111827_100%)] px-5 py-7 text-slate-200 md:px-7 md:py-8"
+      >
+        <div className="absolute -right-24 -top-20 h-56 w-56 rounded-full bg-blue-400/20 blur-3xl" />
+        <div className="absolute -bottom-20 -left-16 h-56 w-56 rounded-full bg-emerald-400/20 blur-3xl" />
+
+        <div className="relative grid gap-6 md:grid-cols-[1.1fr_0.9fr_0.9fr]">
           <div>
-            <h4 className="text-sm font-extrabold text-slate-900">TaskFlow</h4>
-            <p className="mt-1 text-sm text-slate-600">A modern todo workspace for focused professionals.</p>
+            <div className="flex items-center gap-2">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white text-sm font-extrabold text-slate-900">
+                T
+              </span>
+              <div>
+                <p className="text-sm font-extrabold text-white">TaskFlow</p>
+                <p className="text-[11px] text-slate-300">Focused Work System</p>
+              </div>
+            </div>
+            <p className="mt-3 max-w-sm text-sm text-slate-300">
+              A professional todo platform built to keep your planning clear and your execution consistent.
+            </p>
           </div>
+
           <div>
-            <h4 className="text-sm font-extrabold text-slate-900">Product</h4>
-            <ul className="mt-2 space-y-1 text-sm text-slate-600">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400">Product</h4>
+            <ul className="mt-3 space-y-2 text-sm text-slate-200">
               <li>Task Dashboard</li>
-              <li>Priority Filters</li>
-              <li>Search & Sort</li>
+              <li>Priority & Status Filters</li>
+              <li>Search and Sorting</li>
+              <li>Secure Personal Workspace</li>
             </ul>
           </div>
+
           <div>
-            <h4 className="text-sm font-extrabold text-slate-900">Get Started</h4>
-            <p className="mt-1 text-sm text-slate-600">Use demo credentials to explore all core features.</p>
-            <Link href="/login" className="mt-3 inline-flex rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50">
-              Open App
-            </Link>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400">Start</h4>
+            <p className="mt-3 text-sm text-slate-300">Use the demo account to explore the complete flow.</p>
+            <div className="mt-4 flex gap-2">
+              <Link
+                href="/login"
+                className="rounded-lg bg-white px-4 py-2 text-xs font-bold text-slate-900 transition hover:bg-slate-100"
+              >
+                Open App
+              </Link>
+              <a
+                href="#features"
+                className="rounded-lg border border-white/25 px-4 py-2 text-xs font-bold text-white transition hover:bg-white/10"
+              >
+                Explore Features
+              </a>
+            </div>
           </div>
+        </div>
+
+        <div className="relative mt-6 border-t border-white/15 pt-4 text-xs text-slate-400">
+          © {new Date().getFullYear()} TaskFlow. Built for focused professionals.
         </div>
       </footer>
     </main>
