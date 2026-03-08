@@ -15,7 +15,7 @@ type TodoListProps = {
 export function TodoList({ todos, onToggle, onDelete, onUpdate }: TodoListProps) {
   if (!todos.length) {
     return (
-      <div className="glass-card rounded-2xl border-dashed p-10 text-center">
+      <div className="premium-panel border-dashed border-slate-300 p-10 text-center">
         <p className="text-lg font-bold text-slate-700">No tasks match these filters.</p>
         <p className="mt-1 text-sm text-slate-500">Try changing search, status, or priority.</p>
       </div>

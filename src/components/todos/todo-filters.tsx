@@ -21,7 +21,7 @@ export function TodoFilters() {
   };
 
   return (
-    <div className="glass-card rounded-2xl p-4">
+    <div className="premium-panel p-4">
       <div className="mb-3 flex items-center justify-between">
         <h3 className="text-sm font-bold text-slate-900">Refine Tasks</h3>
         <p className="text-xs text-slate-500">Search, filter, sort</p>

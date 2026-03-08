@@ -4,27 +4,42 @@ import { redirect } from "next/navigation";
 
 const featureCards = [
   {
-    title: "Rapid Input",
-    body: "Capture tasks instantly with priority and due date so ideas never get lost.",
+    title: "Precision Planning",
+    body: "Use priority, due date, and clean categorization to plan with clarity.",
     tone: "from-blue-50 to-white"
   },
   {
-    title: "Execution Focus",
-    body: "Search, filter, and sort give you the next best action in seconds.",
+    title: "Focus Engine",
+    body: "Search, filter, and sort help you find the next best task instantly.",
     tone: "from-emerald-50 to-white"
   },
   {
-    title: "Zero Noise",
-    body: "Purposeful UI with no bloated features, just clarity and momentum.",
+    title: "Execution Rhythm",
+    body: "Move from task capture to completion in a workflow that feels effortless.",
     tone: "from-indigo-50 to-white"
   }
 ];
 
 const steps = [
-  { id: "01", title: "Capture", desc: "Drop tasks quickly before context fades." },
-  { id: "02", title: "Prioritize", desc: "Apply priority and deadlines to shape your day." },
-  { id: "03", title: "Complete", desc: "Work through a visible, structured queue." },
-  { id: "04", title: "Review", desc: "Track progress and reset for tomorrow." }
+  { id: "01", title: "Capture", desc: "Record tasks immediately before context is lost." },
+  { id: "02", title: "Prioritize", desc: "Assign urgency and deadlines to shape your day." },
+  { id: "03", title: "Execute", desc: "Work from a clear queue designed for momentum." },
+  { id: "04", title: "Review", desc: "Track wins and reset focus for the next cycle." }
+];
+
+const faqs = [
+  {
+    q: "Is this app good for personal and work tasks?",
+    a: "Yes. The interface is optimized for both personal planning and professional daily execution."
+  },
+  {
+    q: "Does it support filtering and searching quickly?",
+    a: "Yes. You can search titles and filter by status, priority, and sort order instantly."
+  },
+  {
+    q: "Can I use demo access now?",
+    a: "Yes. Login is available now and signup UI is present with availability notice."
+  }
 ];
 
 export default async function HomePage() {
@@ -33,7 +48,7 @@ export default async function HomePage() {
 
   return (
     <main className="page-shell min-h-screen py-8 md:py-10">
-      <nav className="animate-rise mb-4 flex items-center justify-between rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 backdrop-blur md:px-5">
+      <nav className="animate-rise mb-4 flex items-center justify-between rounded-2xl border border-slate-200 bg-white/95 px-4 py-3 shadow-sm backdrop-blur md:px-5">
         <div className="flex items-center gap-2">
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-sm font-extrabold text-white">
             T
@@ -50,38 +65,46 @@ export default async function HomePage() {
           <a href="#workflow" className="hover:text-slate-900">
             Workflow
           </a>
+          <a href="#faq" className="hover:text-slate-900">
+            FAQ
+          </a>
           <a href="#footer" className="hover:text-slate-900">
             Contact
           </a>
         </div>
-        <Link href="/login" className="rounded-lg bg-primary px-4 py-2 text-xs font-bold text-white hover:brightness-110">
-          Login
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link href="/login" className="rounded-lg border border-slate-300 px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50">
+            Login
+          </Link>
+          <Link href="/signup" className="rounded-lg bg-primary px-4 py-2 text-xs font-bold text-white hover:brightness-110">
+            Sign Up
+          </Link>
+        </div>
       </nav>
 
       <section className="hero-grid animate-rise relative overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_28px_90px_-40px_rgba(15,23,42,0.6)]">
         <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-blue-100/70 blur-3xl" />
         <div className="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-emerald-100/70 blur-3xl" />
 
-        <div className="relative grid gap-8 p-6 md:grid-cols-[1.1fr_0.9fr] md:p-10">
+        <div className="relative grid gap-8 p-6 md:grid-cols-[1.12fr_0.88fr] md:p-10">
           <div className="space-y-6">
             <p className="inline-flex rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
-              Beautiful Task Workspace
+              Modern Productivity Platform
             </p>
 
             <h1 className="text-4xl font-extrabold leading-tight text-slate-900 md:text-6xl">
-              Plan clearly.
+              Beautiful planning.
               <br />
-              Execute deeply.
+              Serious execution.
             </h1>
 
             <p className="max-w-xl text-base text-slate-600 md:text-lg">
-              A polished todo platform designed for focused professionals. Keep every task visible, prioritized, and moving.
+              TaskFlow gives you a polished workspace to capture, prioritize, and complete tasks with confidence. No clutter, just momentum.
             </p>
 
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/login"
+                href="/signup"
                 className="pulse-ring rounded-xl bg-[linear-gradient(180deg,#256cff_0%,#125dff_100%)] px-6 py-3 text-sm font-semibold text-white shadow-[0_20px_34px_-20px_rgba(18,93,255,1)] transition hover:brightness-110"
               >
                 Start Free
@@ -101,30 +124,30 @@ export default async function HomePage() {
               </article>
               <article className="rounded-xl border border-slate-200 bg-white/90 p-3 text-center backdrop-blur">
                 <p className="text-2xl font-extrabold text-slate-900">Fast</p>
-                <p className="text-xs text-slate-500">Task capture</p>
+                <p className="text-xs text-slate-500">Task Capture</p>
               </article>
               <article className="rounded-xl border border-slate-200 bg-white/90 p-3 text-center backdrop-blur">
                 <p className="text-2xl font-extrabold text-slate-900">Clean</p>
-                <p className="text-xs text-slate-500">Visual system</p>
+                <p className="text-xs text-slate-500">Visual UX</p>
               </article>
             </div>
           </div>
 
           <aside className="rounded-2xl border border-slate-200 bg-[linear-gradient(160deg,#0f172a_0%,#1e293b_58%,#111827_100%)] p-5 text-slate-100">
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-300">Live Preview</p>
-            <h2 className="mt-2 text-xl font-bold">Your day at a glance</h2>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-300">Today Overview</p>
+            <h2 className="mt-2 text-xl font-bold">Execution snapshot</h2>
             <div className="mt-4 space-y-3">
               <div className="rounded-xl border border-white/10 bg-white/5 p-3">
                 <p className="text-xs text-slate-300">High priority</p>
-                <p className="text-sm font-semibold">Finish dashboard wireframes</p>
+                <p className="text-sm font-semibold">Ship dashboard refinements</p>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/5 p-3">
                 <p className="text-xs text-slate-300">Due today</p>
-                <p className="text-sm font-semibold">Client update and QA pass</p>
+                <p className="text-sm font-semibold">Client review and QA walkthrough</p>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/5 p-3">
                 <p className="text-xs text-slate-300">Completed</p>
-                <p className="text-sm font-semibold">Morning planning and backlog clean-up</p>
+                <p className="text-sm font-semibold">Morning planning and backlog cleanup</p>
               </div>
             </div>
           </aside>
@@ -142,19 +165,17 @@ export default async function HomePage() {
 
       <section className="mt-6 grid gap-4 md:grid-cols-2">
         <article className="glass-card rounded-2xl p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Why teams choose this</p>
-          <h3 className="mt-1 text-xl font-extrabold text-slate-900">Built for daily execution</h3>
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Why it works</p>
+          <h3 className="mt-1 text-xl font-extrabold text-slate-900">Designed for daily consistency</h3>
           <p className="mt-2 text-sm text-slate-600">
-            This product focuses on what most people need every day: quick task capture, clear prioritization, and
-            consistent completion. No feature bloat and no confusing setup.
+            TaskFlow avoids feature overload and emphasizes the core loop that matters most: capture, prioritize, execute.
           </p>
         </article>
         <article className="glass-card rounded-2xl p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">What you can do</p>
-          <h3 className="mt-1 text-xl font-extrabold text-slate-900">From idea to done in minutes</h3>
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">What you gain</p>
+          <h3 className="mt-1 text-xl font-extrabold text-slate-900">Clarity from idea to done</h3>
           <p className="mt-2 text-sm text-slate-600">
-            Create tasks with due dates and priorities, filter by status, and track completion progress with a clean,
-            responsive dashboard designed for both desktop and mobile.
+            Every task gets context and priority, helping you move faster with better decisions and less mental overhead.
           </p>
         </article>
       </section>
@@ -181,14 +202,22 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <section id="faq" className="mt-6 grid gap-4 md:grid-cols-3">
+        {faqs.map((item) => (
+          <article key={item.q} className="glass-card rounded-2xl p-5">
+            <h3 className="text-base font-bold text-slate-900">{item.q}</h3>
+            <p className="mt-2 text-sm text-slate-600">{item.a}</p>
+          </article>
+        ))}
+      </section>
+
       <section className="mt-6 overflow-hidden rounded-3xl border border-slate-200 bg-[linear-gradient(140deg,#0f172a_0%,#1e293b_55%,#0f172a_100%)] p-6 text-slate-100 shadow-[0_24px_60px_-38px_rgba(15,23,42,0.8)] md:p-8">
         <div className="grid gap-6 md:grid-cols-[1fr_1fr]">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-300">Contact Us</p>
             <h3 className="mt-2 text-3xl font-extrabold">Let’s build your focused workflow.</h3>
             <p className="mt-2 max-w-md text-sm text-slate-300">
-              Have questions, ideas, or feedback? Reach out and we’ll help you shape the best productivity setup for
-              your team or personal workflow.
+              Have questions, ideas, or feedback? Reach out and we’ll help you shape the best productivity setup for your team or personal workflow.
             </p>
 
             <div className="mt-5 space-y-3">
@@ -248,10 +277,7 @@ export default async function HomePage() {
                 />
               </div>
 
-              <button
-                type="button"
-                className="w-full rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-slate-900 transition hover:bg-slate-100"
-              >
+              <button type="button" className="w-full rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-slate-900 transition hover:bg-slate-100">
                 Send Message
               </button>
             </div>
@@ -269,9 +295,7 @@ export default async function HomePage() {
         <div className="relative grid gap-6 md:grid-cols-[1.1fr_0.9fr_0.9fr]">
           <div>
             <div className="flex items-center gap-2">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white text-sm font-extrabold text-slate-900">
-                T
-              </span>
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white text-sm font-extrabold text-slate-900">T</span>
               <div>
                 <p className="text-sm font-extrabold text-white">TaskFlow</p>
                 <p className="text-[11px] text-slate-300">Focused Work System</p>
@@ -296,16 +320,10 @@ export default async function HomePage() {
             <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400">Start</h4>
             <p className="mt-3 text-sm text-slate-300">Use the demo account to explore the complete flow.</p>
             <div className="mt-4 flex gap-2">
-              <Link
-                href="/login"
-                className="rounded-lg bg-white px-4 py-2 text-xs font-bold text-slate-900 transition hover:bg-slate-100"
-              >
+              <Link href="/login" className="rounded-lg bg-white px-4 py-2 text-xs font-bold text-slate-900 transition hover:bg-slate-100">
                 Open App
               </Link>
-              <a
-                href="#features"
-                className="rounded-lg border border-white/25 px-4 py-2 text-xs font-bold text-white transition hover:bg-white/10"
-              >
+              <a href="#features" className="rounded-lg border border-white/25 px-4 py-2 text-xs font-bold text-white transition hover:bg-white/10">
                 Explore Features
               </a>
             </div>
