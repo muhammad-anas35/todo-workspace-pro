@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { TodoForm, type TodoFormValues } from "@/components/todos/todo-form";
 import { cn } from "@/lib/utils";
+import { toast } from "react-toastify";
 import type { Todo } from "@/types/todo";
 
 type TodoItemProps = {
@@ -77,7 +78,14 @@ export function TodoItem({ todo, onToggle, onDelete, onUpdate }: TodoItemProps) 
           <Button type="button" variant="secondary" onClick={() => onToggle(todo.id)}>
             {todo.status === "completed" ? "Reopen" : "Complete"}
           </Button>
-          <Button type="button" variant="ghost" onClick={() => setEditing(true)}>
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={() => {
+              toast.info("Editing todo...");
+              setEditing(true);
+            }}
+          >
             Edit
           </Button>
           <Button

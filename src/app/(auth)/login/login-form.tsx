@@ -5,6 +5,8 @@ import type { FormEvent } from "react";
 import { signIn } from "next-auth/react";
 import type { Route } from "next";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
 
 export function LoginForm() {
@@ -32,18 +34,27 @@ export function LoginForm() {
     setLoading(false);
 
     if (result?.error) {
+      toast.error("Login failed. Check your email or password.");
       setError("Invalid credentials. Use demo@example.com / pass1234");
       return;
     }
 
+    toast.success("Login successful. Redirecting...");
     router.push(callbackUrl as Route);
   };
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+    <form onSubmit={onSubmit} className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_18px_40px_-32px_rgba(15,23,42,0.55)]">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Sign in</h1>
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Account Access</p>
+        <h1 className="mt-1 text-2xl font-extrabold text-slate-900">Sign in</h1>
         <p className="mt-1 text-sm text-slate-600">Use demo credentials to enter your workspace.</p>
+      </div>
+
+      <div className="rounded-xl border border-blue-100 bg-blue-50/70 p-3 text-xs text-slate-700">
+        <p className="font-semibold text-slate-900">Demo Account</p>
+        <p className="mt-1">Email: demo@example.com</p>
+        <p>Password: pass1234</p>
       </div>
 
       <div>
@@ -79,6 +90,13 @@ export function LoginForm() {
       <Button type="submit" className="w-full" disabled={loading}>
         {loading ? "Signing in..." : "Sign In"}
       </Button>
+
+      <p className="text-center text-sm text-slate-600">
+        New here?{" "}
+        <Link href="/signup" className="font-semibold text-primary hover:underline">
+          Create account
+        </Link>
+      </p>
     </form>
   );
 }

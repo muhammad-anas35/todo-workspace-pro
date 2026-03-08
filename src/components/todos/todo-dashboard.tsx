@@ -7,6 +7,7 @@ import { TodoForm, type TodoFormValues } from "@/components/todos/todo-form";
 import { TodoList } from "@/components/todos/todo-list";
 import { applyTodoQuery } from "@/lib/todo-utils";
 import { generateId } from "@/lib/utils";
+import { toast } from "react-toastify";
 import type { Todo, TodoQuery } from "@/types/todo";
 
 type TodoDashboardProps = {
@@ -57,19 +58,23 @@ export function TodoDashboard({ userEmail }: TodoDashboardProps) {
       updatedAt: now
     };
     persist([item, ...todos]);
+    toast.success("Todo created.");
   };
 
   const toggleTodo = (id: string) => {
-    const next = todos.map((todo) =>
-      todo.id === id
-        ? {
-            ...todo,
-            status: (todo.status === "completed" ? "active" : "completed") as Todo["status"],
-            updatedAt: new Date().toISOString()
-          }
-        : todo
-    );
+    let toggledTo: Todo["status"] | null = null;
+    const next = todos.map((todo) => {
+      if (todo.id !== id) return todo;
+      const status = (todo.status === "completed" ? "active" : "completed") as Todo["status"];
+      toggledTo = status;
+      return {
+        ...todo,
+        status,
+        updatedAt: new Date().toISOString()
+      };
+    });
     persist(next);
+    toast.info(toggledTo === "completed" ? "Todo marked completed." : "Todo reopened.");
   };
 
   const updateTodo = (id: string, value: TodoFormValues) => {
@@ -86,10 +91,12 @@ export function TodoDashboard({ userEmail }: TodoDashboardProps) {
         : todo
     );
     persist(next);
+    toast.success("Todo saved.");
   };
 
   const deleteTodo = (id: string) => {
     persist(todos.filter((todo) => todo.id !== id));
+    toast.error("Todo deleted.");
   };
 
   const visibleTodos = useMemo(() => applyTodoQuery(todos, query), [todos, query]);

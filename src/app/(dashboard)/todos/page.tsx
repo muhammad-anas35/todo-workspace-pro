@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { LogoutButton } from "./logout-button";
@@ -17,8 +18,14 @@ export default async function TodoPage() {
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Task Command Center</p>
             <h1 className="mt-2 text-3xl font-extrabold text-slate-900 md:text-4xl">Daily Execution Dashboard</h1>
             <p className="mt-2 max-w-xl text-sm text-slate-600">
-              Capture tasks, prioritize quickly, and keep momentum with a workflow built for real execution.
+              Capture tasks, prioritize clearly, and move work forward with a polished productivity workflow.
             </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Link href="/" className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50">
+                ← Back to Landing
+              </Link>
+              <span className="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-600">Live Workspace</span>
+            </div>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
