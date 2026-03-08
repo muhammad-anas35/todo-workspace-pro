@@ -1,0 +1,84 @@
+"use client";
+
+import { useState } from "react";
+import type { FormEvent } from "react";
+import { signIn } from "next-auth/react";
+import type { Route } from "next";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
+
+export function LoginForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") ?? "/todos";
+
+  const [email, setEmail] = useState("demo@example.com");
+  const [password, setPassword] = useState("pass1234");
+  const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+    setError("");
+
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+      callbackUrl
+    });
+
+    setLoading(false);
+
+    if (result?.error) {
+      setError("Invalid credentials. Use demo@example.com / pass1234");
+      return;
+    }
+
+    router.push(callbackUrl as Route);
+  };
+
+  return (
+    <form onSubmit={onSubmit} className="space-y-4 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+      <div>
+        <h1 className="text-2xl font-bold text-slate-900">Sign in</h1>
+        <p className="mt-1 text-sm text-slate-600">Use demo credentials to enter your workspace.</p>
+      </div>
+
+      <div>
+        <label className="mb-1.5 block text-sm font-semibold text-slate-700" htmlFor="email">
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-[var(--ring)]"
+          required
+        />
+      </div>
+
+      <div>
+        <label className="mb-1.5 block text-sm font-semibold text-slate-700" htmlFor="password">
+          Password
+        </label>
+        <input
+          id="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-[var(--ring)]"
+          required
+        />
+      </div>
+
+      {error ? <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-danger">{error}</p> : null}
+
+      <Button type="submit" className="w-full" disabled={loading}>
+        {loading ? "Signing in..." : "Sign In"}
+      </Button>
+    </form>
+  );
+}
