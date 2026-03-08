@@ -88,6 +88,13 @@ button {
   backdrop-filter: blur(10px);
 }
 
+.premium-panel {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 18px 36px -30px rgba(15, 23, 42, 0.5);
+}
+
 .hero-grid {
   background-image:
     linear-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px),

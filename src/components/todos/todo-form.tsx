@@ -35,13 +35,13 @@ export function TodoForm({ initialValue, submitLabel, onSubmit, onCancel }: Todo
   });
 
   return (
-    <form className="glass-card rounded-2xl p-5 md:p-6" onSubmit={form.handleSubmit(onSubmit)}>
-      <div className="mb-4">
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Task Input</p>
+    <form className="premium-panel overflow-hidden" onSubmit={form.handleSubmit(onSubmit)}>
+      <div className="border-b border-slate-200 bg-[linear-gradient(180deg,#f8fbff_0%,#ffffff_100%)] px-5 py-4 md:px-6">
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Task Studio</p>
         <h2 className="text-xl font-extrabold text-slate-900">Create or Edit Task</h2>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 px-5 py-5 md:px-6 md:py-6">
         <div>
           <label className="mb-1.5 block text-sm font-semibold text-slate-700" htmlFor="title">
             Title
