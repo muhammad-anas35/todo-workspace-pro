@@ -44,59 +44,61 @@ export function LoginForm() {
   };
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_18px_40px_-32px_rgba(15,23,42,0.55)]">
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Account Access</p>
-        <h1 className="mt-1 text-2xl font-extrabold text-slate-900">Sign in</h1>
-        <p className="mt-1 text-sm text-slate-600">Use demo credentials to enter your workspace.</p>
+    <form onSubmit={onSubmit} className="space-y-5 rounded-[1.5rem] border border-slate-200/60 bg-white p-2 shadow-[0_8px_32px_-16px_rgba(15,23,42,0.12)]">
+      <div className="space-y-5 rounded-[1.25rem] bg-gradient-to-b from-slate-50/50 to-white p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">Account Access</p>
+          <h1 className="mt-2 text-2xl font-bold tracking-tight text-slate-900">Sign in</h1>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">Use demo credentials to enter your workspace.</p>
+        </div>
+
+        <div className="rounded-xl border border-blue-200/60 bg-blue-50/50 p-4 text-xs backdrop-blur-sm">
+          <p className="font-bold text-slate-900">Demo Account</p>
+          <p className="mt-2 font-medium text-slate-700">Email: demo@example.com</p>
+          <p className="font-medium text-slate-700">Password: pass1234</p>
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm font-bold text-slate-700" htmlFor="email">
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition-all duration-300 focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm font-bold text-slate-700" htmlFor="password">
+            Password
+          </label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition-all duration-300 focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+            required
+          />
+        </div>
+
+        {error ? <p className="rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700">{error}</p> : null}
+
+        <Button type="submit" className="w-full" disabled={loading}>
+          {loading ? "Signing in..." : "Sign In"}
+        </Button>
+
+        <p className="text-center text-sm text-slate-600">
+          New here?{" "}
+          <Link href="/signup" className="font-bold text-slate-900 transition-all duration-300 hover:underline">
+            Create account
+          </Link>
+        </p>
       </div>
-
-      <div className="rounded-xl border border-blue-100 bg-blue-50/70 p-3 text-xs text-slate-700">
-        <p className="font-semibold text-slate-900">Demo Account</p>
-        <p className="mt-1">Email: demo@example.com</p>
-        <p>Password: pass1234</p>
-      </div>
-
-      <div>
-        <label className="mb-1.5 block text-sm font-semibold text-slate-700" htmlFor="email">
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-[var(--ring)]"
-          required
-        />
-      </div>
-
-      <div>
-        <label className="mb-1.5 block text-sm font-semibold text-slate-700" htmlFor="password">
-          Password
-        </label>
-        <input
-          id="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-[var(--ring)]"
-          required
-        />
-      </div>
-
-      {error ? <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-danger">{error}</p> : null}
-
-      <Button type="submit" className="w-full" disabled={loading}>
-        {loading ? "Signing in..." : "Sign In"}
-      </Button>
-
-      <p className="text-center text-sm text-slate-600">
-        New here?{" "}
-        <Link href="/signup" className="font-semibold text-primary hover:underline">
-          Create account
-        </Link>
-      </p>
     </form>
   );
 }

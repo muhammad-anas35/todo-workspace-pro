@@ -21,6 +21,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   margin: 0;
@@ -29,12 +33,24 @@ body {
 }
 
 body {
-  font-family: "Manrope", "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-family: "Geist", "Cabinet Grotesk", "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text);
   background:
     radial-gradient(1200px 480px at 0% -20%, rgba(18, 93, 255, 0.2), transparent 60%),
     radial-gradient(1200px 580px at 100% -30%, rgba(15, 163, 127, 0.15), transparent 60%),
     var(--bg);
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: overlay;
 }
 
 input,
@@ -47,11 +63,11 @@ button {
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(16px) blur(4px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) blur(0);
   }
 }
 
@@ -68,7 +84,7 @@ button {
 }
 
 .animate-rise {
-  animation: rise 360ms ease-out both;
+  animation: rise 800ms cubic-bezier(0.32, 0.72, 0, 1) both;
 }
 
 .pulse-ring {
