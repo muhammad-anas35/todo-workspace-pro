@@ -121,33 +121,43 @@ export function TodoDashboard({ userEmail }: TodoDashboardProps) {
   }, [todos]);
 
   return (
-    <section className="space-y-4">
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-        <article className="min-h-[118px] rounded-2xl border border-blue-200 bg-[linear-gradient(160deg,#dbeafe_0%,#eff6ff_55%,#ffffff_100%)] p-4 shadow-[0_16px_30px_-24px_rgba(37,99,235,0.7)] transition duration-300 hover:border-blue-300 hover:bg-[linear-gradient(160deg,#bfdbfe_0%,#dbeafe_55%,#ffffff_100%)] hover:shadow-[0_22px_36px_-22px_rgba(37,99,235,0.9)]">
-          <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">Total</p>
-          <p className="mt-1 text-3xl font-extrabold text-blue-900">{stats.total}</p>
+    <section className="space-y-8">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <article className="group relative overflow-hidden rounded-[1.5rem] border border-blue-200/60 bg-white p-1.5 shadow-[0_8px_24px_-12px_rgba(37,99,235,0.3)] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:shadow-[0_16px_40px_-12px_rgba(37,99,235,0.5)]">
+          <div className="rounded-[1.25rem] bg-gradient-to-b from-blue-50 to-white p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-blue-700">Total</p>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-blue-900">{stats.total}</p>
+          </div>
         </article>
-        <article className="min-h-[118px] rounded-2xl border border-cyan-200 bg-[linear-gradient(160deg,#cffafe_0%,#ecfeff_55%,#ffffff_100%)] p-4 shadow-[0_16px_30px_-24px_rgba(8,145,178,0.7)] transition duration-300 hover:border-cyan-300 hover:bg-[linear-gradient(160deg,#a5f3fc_0%,#cffafe_55%,#ffffff_100%)] hover:shadow-[0_22px_36px_-22px_rgba(8,145,178,0.9)]">
-          <p className="text-xs font-semibold uppercase tracking-wide text-cyan-700">Active</p>
-          <p className="mt-1 text-3xl font-extrabold text-cyan-900">{stats.active}</p>
+        <article className="group relative overflow-hidden rounded-[1.5rem] border border-cyan-200/60 bg-white p-1.5 shadow-[0_8px_24px_-12px_rgba(8,145,178,0.3)] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:shadow-[0_16px_40px_-12px_rgba(8,145,178,0.5)]">
+          <div className="rounded-[1.25rem] bg-gradient-to-b from-cyan-50 to-white p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-cyan-700">Active</p>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-cyan-900">{stats.active}</p>
+          </div>
         </article>
-        <article className="min-h-[118px] rounded-2xl border border-emerald-200 bg-[linear-gradient(160deg,#d1fae5_0%,#ecfdf5_55%,#ffffff_100%)] p-4 shadow-[0_16px_30px_-24px_rgba(5,150,105,0.7)] transition duration-300 hover:border-emerald-300 hover:bg-[linear-gradient(160deg,#a7f3d0_0%,#d1fae5_55%,#ffffff_100%)] hover:shadow-[0_22px_36px_-22px_rgba(5,150,105,0.9)]">
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Completed</p>
-          <p className="mt-1 text-3xl font-extrabold text-emerald-900">{stats.completed}</p>
+        <article className="group relative overflow-hidden rounded-[1.5rem] border border-emerald-200/60 bg-white p-1.5 shadow-[0_8px_24px_-12px_rgba(5,150,105,0.3)] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:shadow-[0_16px_40px_-12px_rgba(5,150,105,0.5)]">
+          <div className="rounded-[1.25rem] bg-gradient-to-b from-emerald-50 to-white p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-700">Completed</p>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-emerald-900">{stats.completed}</p>
+          </div>
         </article>
-        <article className="min-h-[118px] rounded-2xl border border-amber-200 bg-[linear-gradient(160deg,#fef3c7_0%,#fffbeb_55%,#ffffff_100%)] p-4 shadow-[0_16px_30px_-24px_rgba(217,119,6,0.65)] transition duration-300 hover:border-amber-300 hover:bg-[linear-gradient(160deg,#fde68a_0%,#fef3c7_55%,#ffffff_100%)] hover:shadow-[0_22px_36px_-22px_rgba(217,119,6,0.85)]">
-          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">High Priority</p>
-          <p className="mt-1 text-3xl font-extrabold text-amber-900">{stats.high}</p>
+        <article className="group relative overflow-hidden rounded-[1.5rem] border border-amber-200/60 bg-white p-1.5 shadow-[0_8px_24px_-12px_rgba(217,119,6,0.3)] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:shadow-[0_16px_40px_-12px_rgba(217,119,6,0.5)]">
+          <div className="rounded-[1.25rem] bg-gradient-to-b from-amber-50 to-white p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-amber-700">High Priority</p>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-amber-900">{stats.high}</p>
+          </div>
         </article>
-        <article className="min-h-[118px] rounded-2xl border border-violet-200 bg-[linear-gradient(160deg,#ede9fe_0%,#f5f3ff_55%,#ffffff_100%)] p-4 shadow-[0_16px_30px_-24px_rgba(109,40,217,0.65)] transition duration-300 hover:border-violet-300 hover:bg-[linear-gradient(160deg,#ddd6fe_0%,#ede9fe_55%,#ffffff_100%)] hover:shadow-[0_22px_36px_-22px_rgba(109,40,217,0.85)]">
-          <p className="text-xs font-semibold uppercase tracking-wide text-violet-700">Due Today</p>
-          <p className="mt-1 text-3xl font-extrabold text-violet-900">{stats.dueToday}</p>
+        <article className="group relative overflow-hidden rounded-[1.5rem] border border-violet-200/60 bg-white p-1.5 shadow-[0_8px_24px_-12px_rgba(109,40,217,0.3)] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:shadow-[0_16px_40px_-12px_rgba(109,40,217,0.5)]">
+          <div className="rounded-[1.25rem] bg-gradient-to-b from-violet-50 to-white p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-violet-700">Due Today</p>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-violet-900">{stats.dueToday}</p>
+          </div>
         </article>
       </div>
 
-      <div className="grid gap-4 xl:grid-cols-[0.95fr_1.05fr]">
+      <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
         <TodoForm submitLabel="Add Todo" onSubmit={addTodo} />
-        <div className="space-y-4">
+        <div className="space-y-6">
           <TodoFilters />
           <TodoList todos={visibleTodos} onToggle={toggleTodo} onDelete={deleteTodo} onUpdate={updateTodo} />
         </div>

@@ -35,77 +35,79 @@ export function TodoForm({ initialValue, submitLabel, onSubmit, onCancel }: Todo
   });
 
   return (
-    <form className="premium-panel overflow-hidden" onSubmit={form.handleSubmit(onSubmit)}>
-      <div className="border-b border-slate-200 bg-[linear-gradient(180deg,#f8fbff_0%,#ffffff_100%)] px-5 py-4 md:px-6">
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Task Studio</p>
-        <h2 className="text-xl font-extrabold text-slate-900">Create or Edit Task</h2>
-      </div>
-
-      <div className="space-y-4 px-5 py-5 md:px-6 md:py-6">
-        <div>
-          <label className="mb-1.5 block text-sm font-semibold text-slate-700" htmlFor="title">
-            Title
-          </label>
-          <input
-            id="title"
-            className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-[var(--ring)]"
-            {...form.register("title")}
-            placeholder="Write your task"
-          />
-          <p className="mt-1 text-xs text-danger">{form.formState.errors.title?.message}</p>
+    <form className="group relative overflow-hidden rounded-[1.5rem] border border-slate-200/60 bg-white p-2 shadow-[0_8px_32px_-16px_rgba(15,23,42,0.12)]" onSubmit={form.handleSubmit(onSubmit)}>
+      <div className="overflow-hidden rounded-[1.25rem] bg-gradient-to-b from-slate-50/50 to-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+        <div className="border-b border-slate-100 bg-gradient-to-b from-slate-50/80 to-transparent px-6 py-5">
+          <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">Task Studio</p>
+          <h2 className="mt-1 text-xl font-bold tracking-tight text-slate-900">Create or Edit Task</h2>
         </div>
 
-        <div>
-          <label className="mb-1.5 block text-sm font-semibold text-slate-700" htmlFor="description">
-            Description
-          </label>
-          <textarea
-            id="description"
-            className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-[var(--ring)]"
-            rows={4}
-            {...form.register("description")}
-            placeholder="Optional details"
-          />
-        </div>
-
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <div className="space-y-5 px-6 py-6">
           <div>
-            <label className="mb-1.5 block text-sm font-semibold text-slate-700" htmlFor="dueDate">
-              Due Date
+            <label className="mb-2 block text-sm font-bold text-slate-700" htmlFor="title">
+              Title
             </label>
             <input
-              id="dueDate"
-              type="date"
-              className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-[var(--ring)]"
-              {...form.register("dueDate")}
+              id="title"
+              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition-all duration-300 focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+              {...form.register("title")}
+              placeholder="Write your task"
+            />
+            <p className="mt-1.5 text-xs font-medium text-red-600">{form.formState.errors.title?.message}</p>
+          </div>
+
+          <div>
+            <label className="mb-2 block text-sm font-bold text-slate-700" htmlFor="description">
+              Description
+            </label>
+            <textarea
+              id="description"
+              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition-all duration-300 focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+              rows={4}
+              {...form.register("description")}
+              placeholder="Optional details"
             />
           </div>
 
-          <div>
-            <label className="mb-1.5 block text-sm font-semibold text-slate-700" htmlFor="priority">
-              Priority
-            </label>
-            <select
-              id="priority"
-              className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-[var(--ring)]"
-              {...form.register("priority")}
-            >
-              {(["low", "medium", "high"] as TodoPriority[]).map((p) => (
-                <option value={p} key={p}>
-                  {p[0].toUpperCase() + p.slice(1)}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <label className="mb-2 block text-sm font-bold text-slate-700" htmlFor="dueDate">
+                Due Date
+              </label>
+              <input
+                id="dueDate"
+                type="date"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition-all duration-300 focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+                {...form.register("dueDate")}
+              />
+            </div>
 
-        <div className="flex flex-wrap gap-2">
-          <Button type="submit">{submitLabel}</Button>
-          {onCancel ? (
-            <Button type="button" variant="secondary" onClick={onCancel}>
-              Cancel
-            </Button>
-          ) : null}
+            <div>
+              <label className="mb-2 block text-sm font-bold text-slate-700" htmlFor="priority">
+                Priority
+              </label>
+              <select
+                id="priority"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition-all duration-300 focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+                {...form.register("priority")}
+              >
+                {(["low", "medium", "high"] as TodoPriority[]).map((p) => (
+                  <option value={p} key={p}>
+                    {p[0].toUpperCase() + p.slice(1)}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            <Button type="submit">{submitLabel}</Button>
+            {onCancel ? (
+              <Button type="button" variant="secondary" onClick={onCancel}>
+                Cancel
+              </Button>
+            ) : null}
+          </div>
         </div>
       </div>
     </form>

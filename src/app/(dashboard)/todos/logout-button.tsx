@@ -8,7 +8,8 @@ export function LogoutButton() {
   return (
     <Button
       type="button"
-      variant="ghost"
+      variant="secondary"
+      className="w-full border-white/20 bg-white/10 text-white hover:bg-white/20"
       onClick={async () => {
         toast.info("Logged out successfully.");
         await signOut({ callbackUrl: "/login" });
