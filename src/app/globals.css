@@ -1,6 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #125dff;
+  --color-primary-strong: #0b3ec8;
+  --color-accent: #0fa37f;
+  --color-danger: #c0392b;
+}
 
 :root {
   color-scheme: light;
@@ -10,10 +15,6 @@
   --text: #0f172a;
   --muted: #607086;
   --border: #d6e1f0;
-  --primary: #125dff;
-  --primary-strong: #0b3ec8;
-  --accent: #0fa37f;
-  --danger: #c0392b;
   --ring: rgba(18, 93, 255, 0.35);
 }
 
